@@ -10,11 +10,16 @@ lista.addUser(new User('Thiago', 'thiago@gmail.com', 19));
 
 const router = {
     getAllUsers: (req, res) => {
-        res.json(lista.getAllUsers());
-    },
-    getUserbyId: (req, res) => {
         try {
-            res.json(lista.getUserbyId(req.params.id));
+            const users = lista.getAllUsers();
+            res.status(200).json(users)
+        } catch (error) {
+            res.status(404).json({message: 'Erro ao buscar users', error});
+        }
+    },
+    getUserById: (req, res) => {
+        try {
+            res.json(lista.getUserById(req.params.id));
         } catch (error) {
             res.status(404).json({ message: "Usuário não encontrado", error });
         }

@@ -7,6 +7,7 @@ class User{
         this.email = email;
         this.age = age;
     }
+
 }
 
 module.exports = User;
